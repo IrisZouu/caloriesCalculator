@@ -38,7 +38,6 @@ public class MainActivity extends Activity implements OnQueryTextListener, OnIte
 
 	protected String doInBackground(Void... urls) {
 		String email = getText(R.id.textView1).toString();
-		// Do some validation here
 
 		try {
 			URL url = new URL("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/9266/information?unit=gram&amount=100" + "email=" + email + "&apiKey=" + "xewLWQuRMcmshTSp4gVrM8l88FLPp1VHvcmjsnqym3ugMkeMqi");
@@ -64,6 +63,7 @@ public class MainActivity extends Activity implements OnQueryTextListener, OnIte
 	}
 
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,7 +73,9 @@ public class MainActivity extends Activity implements OnQueryTextListener, OnIte
 		search.setOnQueryTextListener(this);
 		deleteSearchIcon();
 		
-		String[] str = {"croissant", "chocolate frappuccion", "poke bowl", "orange", "apple","steak","cream cheese"};
+		String[] str = {"croissant", "starbucks chocolate frappuccion", "poke bowl", "orange",
+				"apple", "meatball with tomate source", "steak", "cream cheese", "cheese cake",
+				"vanilla ice cream", "iced latte", "americano"};
 		foodList.addAll(Arrays.asList(str));
 		
 		list = (ListView)findViewById(R.id.listView1);
