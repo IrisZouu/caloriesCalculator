@@ -4,8 +4,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Editable;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +39,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.Object;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
+import android.view.View;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.*;
 
 
 public class MainActivity extends Activity implements OnQueryTextListener, OnItemClickListener {
@@ -34,17 +57,44 @@ public class MainActivity extends Activity implements OnQueryTextListener, OnIte
 	private ListView list;
 
 	private Exception exception;
+	//enterFood = (TextView)
+	View enterFood;
+	TextView responseView;
 
+	@Override
+	public View findViewById(int id) {
+		return super.findViewById(id);
+	}
+
+	public void setEnterFood(View enterFood) {
+		this.enterFood = findViewById(R.id.searchView1);
+	}
+    /*public void setResponseView(View responseView) {
+		this.responseView = findViewById(R.id.textView1);
+	}*/
+
+	static final String API_KEY = "xewLWQuRMcmshTSp4gVrM8l88FLPp1VHvcmjsnqeMqi";
+	static final String API_URL = "ym3ugMkhttps://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/9266/information?unit=gram&amount=100";
+
+	protected void onPreExcute() {
+		setProgressBarIndeterminateVisibility(true);
+		//setResponseView(responseView);
+		responseView.setText("");
+	}
 
 	protected String doInBackground(Void... urls) {
-		String email = getText(R.id.textView1).toString();
+		setEnterFood(enterFood);
+		String email = enterFood.toString();
 
 		try {
-			URL url = new URL("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/9266/information?unit=gram&amount=100" + "email=" + email + "&apiKey=" + "xewLWQuRMcmshTSp4gVrM8l88FLPp1VHvcmjsnqym3ugMkeMqi");
+			URL url = new URL(API_URL + "email=" + email + "&apiKey=" + API_KEY);
 			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 				StringBuilder stringBuilder = new StringBuilder();
+				//String line = stringBuilder.toString();
+
+
 				String line;
 				while ((line = bufferedReader.readLine()) != null) {
 					stringBuilder.append(line).append("\n");
@@ -61,6 +111,15 @@ public class MainActivity extends Activity implements OnQueryTextListener, OnIte
 			return null;
 		}
 	}
+protected void onPostExcuse(String response) {
+		if (response == null) {
+			response = "there was an error";
+		}
+		setProgressBarIndeterminateVisibility(true);
+		Log.i("Calories", response);
+		responseView.setText(response);
+}
+
 
 
 

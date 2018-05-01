@@ -30,7 +30,7 @@ public class DetailActivity extends Activity implements OnClickListener {
 		Intent intent = getIntent();
 		foodName = intent.getStringExtra("name");
 		setTitle(foodName);
-		foodAmount = 406.1;
+		foodAmount = 369.1;
 		
 		buttons[0] = (Button)findViewById(R.id.button1);
 		buttons[0].setOnClickListener(this);
@@ -39,7 +39,7 @@ public class DetailActivity extends Activity implements OnClickListener {
 		
 		editText = (EditText)findViewById(R.id.editText1);
 		textView = (TextView)findViewById(R.id.textView1);
-		textView.setText("Food Name: " + foodName + "\n Food Calories: " + foodAmount);
+		textView.setText("Food Name: " + foodName);
 	}
 
 	@Override
