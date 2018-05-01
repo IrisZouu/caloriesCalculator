@@ -1,0 +1,57 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/iris/Desktop/Food2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "map": [
+                {
+                    "source": "/Users/iris/Desktop/Food2/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,11,-1,-1,6,-1,10",
+                        "startColumns": "-1,-1,-1,4,-1,-1,4,-1,4",
+                        "startOffsets": "-1,-1,-1,465,-1,-1,210,-1,400",
+                        "endColumns": "-1,-1,-1,49,-1,-1,50,-1,63",
+                        "endOffsets": "-1,-1,-1,510,-1,-1,256,-1,459"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "169,222,264,301,351,404,439,490,553",
+                        "endColumns": "52,41,36,49,52,34,50,62,63",
+                        "endOffsets": "217,259,296,346,399,434,485,548,612"
+                    }
+                },
+                {
+                    "source": "/Users/iris/Desktop/Food2/app/src/main/res/values/dimens.xml",
+                    "from": {
+                        "startLines": "-1,-1",
+                        "startColumns": "-1,-1",
+                        "startOffsets": "-1,-1"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,113",
+                        "endColumns": "57,55",
+                        "endOffsets": "108,164"
+                    }
+                },
+                {
+                    "source": "/Users/iris/Desktop/Food2/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "-1,-1",
+                        "startColumns": "-1,-1",
+                        "startOffsets": "-1,-1"
+                    },
+                    "to": {
+                        "startLines": "13,16",
+                        "startColumns": "4,4",
+                        "startOffsets": "617,700",
+                        "endLines": "15,18",
+                        "endColumns": "12,12",
+                        "endOffsets": "695,767"
+                    }
+                }
+            ]
+        }
+    ]
+}
