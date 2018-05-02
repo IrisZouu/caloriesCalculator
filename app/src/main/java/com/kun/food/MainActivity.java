@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.JsonToken;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,16 +51,18 @@ import org.json.*;
 
 
 public class MainActivity extends Activity implements OnQueryTextListener, OnItemClickListener {
+
 	private ArrayAdapter<String> adapter;
 	private ArrayList<String> foodList = new ArrayList<String>();
-	
+
 	private SearchView search;
 	private ListView list;
+	/*
 
 	private Exception exception;
 	//enterFood = (TextView)
 	View enterFood;
-	TextView responseView;
+	View responseView;
 
 	@Override
 	public View findViewById(int id) {
@@ -69,9 +72,9 @@ public class MainActivity extends Activity implements OnQueryTextListener, OnIte
 	public void setEnterFood(View enterFood) {
 		this.enterFood = findViewById(R.id.searchView1);
 	}
-    /*public void setResponseView(View responseView) {
+    public void setResponseView(View responseView) {
 		this.responseView = findViewById(R.id.textView1);
-	}*/
+	}
 
 	static final String API_KEY = "xewLWQuRMcmshTSp4gVrM8l88FLPp1VHvcmjsnqeMqi";
 	static final String API_URL = "ym3ugMkhttps://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/9266/information?unit=gram&amount=100";
@@ -79,7 +82,7 @@ public class MainActivity extends Activity implements OnQueryTextListener, OnIte
 	protected void onPreExcute() {
 		setProgressBarIndeterminateVisibility(true);
 		//setResponseView(responseView);
-		responseView.setText("");
+		setContentView(responseView);
 	}
 
 	protected String doInBackground(Void... urls) {
@@ -116,12 +119,22 @@ protected void onPostExcuse(String response) {
 			response = "there was an error";
 		}
 		setProgressBarIndeterminateVisibility(true);
-		Log.i("Calories", response);
+		Log.i("INFO", response);
 		responseView.setText(response);
+
+		try {
+			JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
+			JSONObject locObj = object.getJSONObject("nutrition");
+			JSONArray currentRoot = locObj.getJSONArray("nutrients");
+			Double calories = currentRoot.getDouble(1);
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 }
 
 
-
+*/
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
